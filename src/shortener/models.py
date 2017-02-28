@@ -8,12 +8,16 @@ class MiniURLManager(models.Manager):
 		qs = qs_main.filter(active=True)
 		return qs
 
-	def refresh_shortcodes(self):
+	def refresh_shortcodes(self, items=None):
 		qs = MiniURL.objects.filter(id__gte=1)
+		if items != None and isinstance(items, int):
+			# reverses the query set based on ids
+			qs = qs.order_by('-id')[:items]
+
 		new_codes = 0
 		for q in qs:
 			q.shortcode = create_shortcode(q)
-			print(q.shortcode)
+			print(q.id)
 			q.save
 			new_codes += 1
 		return "New Codes made: {i}".format(i=new_codes)
@@ -27,6 +31,9 @@ class MiniURL(models.Model):
 
 	objects = MiniURLManager() # This hooks into the MiniURLManager's method
 	
+	# class Meta:
+	# 	ordering = 'id'
+
 	def save(self, *args, **kwargs):
 		if self.shortcode is None or self.shortcode == "":
 			self.shortcode = create_shortcode(self)
