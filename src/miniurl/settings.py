@@ -25,7 +25,7 @@ SECRET_KEY = '+$)x-b6i$9^zg79*%9*z%z$e=s!)r+lhi*6cq_zwg)$6tfuzsw'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.amditc.com', 'amditc.com']
 
 
 # Application definition
