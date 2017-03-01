@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # 3rd party apps
-    'django-hosts'
+    'django_hosts',
     # Custom App
     'shortener',
 ]
@@ -57,6 +57,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'miniurl.urls'
+ROOT_HOSTCONF = 'miniurl.hosts'
+DEFAULT_HOST = 'www'
 
 TEMPLATES = [
     {
