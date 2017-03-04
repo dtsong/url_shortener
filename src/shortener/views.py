@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views import View
 
 from .models import MiniURL
+from .forms import SubmitUrlForm
 
 
 def home_view_fbv(request, *args, **kwargs):
@@ -12,10 +13,25 @@ def home_view_fbv(request, *args, **kwargs):
 
 class HomeView(View):
 	def get(self, request, *args, **kwargs):
-		return render(request, "shortener/home.html", {})
+		the_form = SubmitUrlForm()
+		context = {
+			"title": "miniurl.co",
+			"form": the_form
+		}
+
+		return render(request, "shortener/home.html", context)
 
 	def post(self, request, *args, **kwargs):
-		return render(request, "shortener/home.html", {})
+		form = SubmitUrlForm(request.POST)
+		if form.is_valid():
+			print(form.cleaned_data)
+
+		context = {
+			"title": "miniurl.co",
+			"form": form
+		}
+
+		return render(request, "shortener/home.html", context)
 
 
 class MiniCBVView(View): #CBV
