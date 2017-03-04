@@ -25,7 +25,7 @@ SECRET_KEY = '+$)x-b6i$9^zg79*%9*z%z$e=s!)r+lhi*6cq_zwg)$6tfuzsw'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['www.amditc.com', 'amditc.com']
+ALLOWED_HOSTS = ['www.miniurl.co']
 
 
 # Application definition
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # 3rd party apps
     'django_hosts',
+
     # Custom App
     'shortener',
 ]
@@ -59,11 +60,12 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'miniurl.urls'
 ROOT_HOSTCONF = 'miniurl.hosts'
 DEFAULT_HOST = 'www'
+DEFAULT_REDIRECT_URL = "http://www.miniurl.co:8000"
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, "templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

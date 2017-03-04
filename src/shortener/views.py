@@ -4,9 +4,10 @@ from django.views import View
 
 from .models import MiniURL
 
-def mini_redirect_view(request, shortcode=None, *args, **kwargs): #FBV
-	obj = get_object_or_404(MiniURL, shortcode=shortcode)
-	return HttpResponseRedirect(obj.url)
+
+class HomeView(View):
+	def get(self, request, *args, **kwargs):
+		return render(request, "shortener/home.html", {})
 
 
 class MiniCBVView(View): #CBV
