@@ -1,1 +1,8 @@
-<h1> What up fam </h1>
+<div style='wid: 800px; margin: 0 auto;'>
+	<h1> Hi there </h1>
+
+	<form method='POST' action='.'> {% csrf_token %}
+		<input name='url' type='text' placeholder="Shorten your URL like http://www.thebelovedchurch.org" />
+		<input type='submit' value='Shorten'>
+	</form>
+</div>
